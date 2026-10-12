@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Great Barrier Reef | Coral Health</title>
+
+  <!-- Vega-Lite libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- Website Styling (css) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <!-- Introduction -->
+    <header>
+      <p class="eyebrow">FIT3179 | DATA VISUALISATION 2</p>
+      <h1> The Great Barrier Reef: How is it Changing?</h1>
+      <p class="intro">
+        A geographic journey through monitoring coverage, hard coral condition
+        and crown-of-thorns observations. Followed by a newer coral-cover series.
+      </p>
+
+    </header>
+
+    <!-- Map Vis 1: Monitoring Locations -->
+    <section id="coverage">
+      <p class="kicker"> 01 | THE EVIDENCE</p>
+      <h2>First, where do we have observations?</h2>
+      <p>
+        Monitoring is not evenly distributed across the Great Barrier Reef.
+        The dots identify reefs appearing in either of the two AIMS Long-Term
+        Monitoring Program (LTMP) survey datasets. Colours distinguish the
+        survey methods; a reef may appear in both. These are monitoring
+        locations, not a census of every reef.
+      </p>
+
+      <div id="map1_dot_map" class="viz"></div>
+    </section>
+
+    <!-- Map 2: Hard Coral Cover -->
+    <section id="condition">
+      <p class="kicker"> 02 | CONDITIONS</p>
+      <h2>Hard coral cover differs between surveyed reefs</h2>
+      <p>
+        Circle size represents the mean percentage of hard coral cover across
+        available LTMP site-transect observations at each reef during the
+        2022-23 survey year. Larger circles indicate more
+        hard coral cover, not larger reefs. Only reefs sampled in this survey
+        year appear.
+      </p>
+
+      <div id="map2_proportional_symbol_map" class="viz"></div>
+    </section>
+
+    <!-- Map 3: Crown-of-thorns detections -->
+    <section id="pressure">
+      <p class="kicker">03 | POTENTIAL PRESSURE</p>
+      <h2>Where were crown-of-thorns starfish (COTS) detected?</h2>
+      <p>
+        Each 1 degree x 1 degree (latitude x longitude) geographic cell shows the percentage of reefs
+        surveyed in 2023 with a positive crown-of-thorns observation
+        in the LTMP manta-tow dataset. This is detection among surveyed reefs,
+        not starfish abundance or proof of coral loss. Hover to inspect sample
+        sizes; cells with few reefs are less stable.
+      </p>
+
+      <div id="map3_choropleth_map" class="viz"></div>
+    </section>
+
+    <!-- Chart 4: More recent monitoring -->
+    <section id="recent">
+      <p class="kicker">04 | A MORE RECENT VIEW</p>
+      <h2>What does the 2025 monitoring series suggest?</h2>
+      <p>
+        The Marine Monitoring Program (MMP) uses a different method and
+        geography. This line shows the unweighted mean of modelled hard coral
+        cover across the same 51 domain-zone-depth series
+        observed in every year from 2021 to 2025. It is not directly
+        comparable to the LTMP maps and is not a reef-wide estimate.
+      </p>
+
+      <div id="line_chart" class="viz"></div>
+    </section>
+
+    <!-- Data sources and limitations -->
+    <footer>
+      <h3>Data and Interpretation Notes</h3>
+      <p>
+        Data Sources:
+        The data used in this visualisation comes from the Australian Institute 
+        of Marine Science (AIMS), including the Long-Term Monitoring Program (LTMP) 
+        and Marine Monitoring Program (MMP).
+      </p>
+    </footer>
+  </main>
+
+  <!-- Each chart is stored in its own Vega-Lite JSON file. -->
+  <script>
+    // Display the three maps and the supporting line chart.
+    // The first value is the HTML div ID; the second is the JSON filename.
+    const charts = [
+      ["map1_dot_map", "js/map-dot_map.json"],
+      ["map2_proportional_symbol_map", "js/map-proportional_symbol_map.json"],
+      ["map3_choropleth_map", "js/map-choropleth_map.json"],
+      ["line_chart",  "js/line_chart.json"]
+    ];
+
+    // vegaEmbed
+    charts.forEach(function(chart) {
+      const divId = chart[0];
+      const jsonFile = chart[1];
+
+      vegaEmbed("#" + divId, jsonFile, {
+        actions: true,
+        renderer: "svg"
+      }).catch(function(error) {
+        document.getElementById(divId).textContent =
+          "Unable to render chart: " + error.message;
+        console.error(error);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 570,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      148,
+      -19
+    ],
+    "scale": 1000
+  },
+  "title": {
+    "text": "02  Where is hard coral cover higher?",
+    "subtitle": "LTMP site transects, 2022-23; mean site cover per reef (%)",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e5ece8",
+        "stroke": "#b7c7c3",
+        "strokeWidth": 0.6
+      }
+    },
+    {
+      "data": {
+        "url": "data/ltmp_hard_coral_2022_23.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.75,
+        "stroke": "#ffffff",
+        "strokeWidth": 0.6
+      },
+      "encoding": {
+        "longitude": {
+          "field": "LONGITUDE",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "LATITUDE",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "HARD_CORAL_COVER",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "range": [
+              15,
+              1100
+            ]
+          },
+          "legend": {
+            "title": "Hard coral cover (%)"
+          }
+        },
+        "color": {
+          "value": "#197d85"
+        },
+        "tooltip": [
+          {
+            "field": "REEF_NAME",
+            "title": "Reef"
+          },
+          {
+            "field": "HARD_CORAL_COVER",
+            "title": "Mean hard coral cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "SITES",
+            "title": "Survey sites"
+          }
+        ]
+      }
+    }
+  ]
+}
