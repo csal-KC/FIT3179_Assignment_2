@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 220,
+  "data": {
+    "url": "data/mmp_hard_coral_2021_2025.csv"
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "color": "#197d85",
+    "strokeWidth": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "REPORT_YEAR",
+      "type": "ordinal",
+      "title": "Reporting year"
+    },
+    "y": {
+      "field": "MEAN_HARD_CORAL",
+      "type": "quantitative",
+      "title": "Mean modelled hard coral cover (%)",
+      "scale": {
+        "zero": false
+      }
+    },
+    "tooltip": [
+      {
+        "field": "REPORT_YEAR",
+        "title": "Year"
+      },
+      {
+        "field": "MEAN_HARD_CORAL",
+        "title": "Mean cover (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "SERIES",
+        "title": "Domain-depth series"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial"
+  }
+}

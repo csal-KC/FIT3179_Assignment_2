@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/mmp_zone_2025.csv"
+  },
+  "width": 650,
+  "height": 240,
+  "title": {
+    "text": "10  How does 2025 coral cover differ by reef zone?",
+    "subtitle": "MMP hard coral modelled means; selected zones with at least 3 series",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "mark": {
+    "type": "bar",
+    "color": "#D48B55",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "y": {
+      "field": "reef_zone",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "Reef zone"
+    },
+    "x": {
+      "field": "MEAN_COVER",
+      "type": "quantitative",
+      "title": "Mean modelled hard coral cover (%)",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "reef_zone",
+        "type": "nominal",
+        "title": "Zone"
+      },
+      {
+        "field": "MEAN_COVER",
+        "type": "quantitative",
+        "title": "Mean cover (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "SERIES",
+        "type": "quantitative",
+        "title": "Series"
+      }
+    ]
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}

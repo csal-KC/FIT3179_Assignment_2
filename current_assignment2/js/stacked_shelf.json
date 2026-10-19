@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/shelf_benthic_composition_2022_23.csv"
+  },
+  "width": 650,
+  "height": 210,
+  "title": {
+    "text": "08  What covers the surveyed reef sites?",
+    "subtitle": "LTMP mean site cover by shelf, 2022\u201323; normalised to 100%",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "mark": {
+    "type": "bar"
+  },
+  "encoding": {
+    "y": {
+      "field": "SHELF",
+      "type": "nominal",
+      "sort": [
+        "I",
+        "M",
+        "O"
+      ],
+      "title": "Shelf (I / M / O)"
+    },
+    "x": {
+      "field": "COVER_PCT",
+      "type": "quantitative",
+      "title": "Share of mean benthic cover (%)",
+      "stack": "zero",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      }
+    },
+    "color": {
+      "field": "GROUP_CODE",
+      "type": "nominal",
+      "title": "Benthic category",
+      "scale": {
+        "domain": [
+          "Hard Coral",
+          "Soft Coral",
+          "Algae",
+          "Other"
+        ],
+        "range": [
+          "#D48B55",
+          "#786DA8",
+          "#73A79D",
+          "#B8C5C0"
+        ]
+      }
+    },
+    "order": {
+      "field": "GROUP_CODE",
+      "type": "nominal",
+      "sort": "ascending"
+    },
+    "tooltip": [
+      {
+        "field": "SHELF",
+        "type": "nominal",
+        "title": "Shelf"
+      },
+      {
+        "field": "GROUP_CODE",
+        "type": "nominal",
+        "title": "Category"
+      },
+      {
+        "field": "COVER_PCT",
+        "type": "quantitative",
+        "title": "Share (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}

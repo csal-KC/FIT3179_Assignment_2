@@ -1,0 +1,136 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "white",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12
+    }
+  },
+  "data": {
+    "url": "data/matched_reefs_2022_2023.csv"
+  },
+  "width": 630,
+  "height": 330,
+  "title": {
+    "text": "12  Which reefs changed between 2022 and 2023?",
+    "subtitle": "LTMP: 32 reefs sampled in both years; percentage-point differences",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "opacity": 0.52,
+        "strokeWidth": 1.7
+      },
+      "encoding": {
+        "x": {
+          "field": "YEAR",
+          "type": "ordinal",
+          "sort": [
+            2022,
+            2023
+          ],
+          "title": "Survey year"
+        },
+        "y": {
+          "field": "COVER",
+          "type": "quantitative",
+          "title": "Mean hard coral cover (%)",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "detail": {
+          "field": "REEF_ID"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.CHANGE >= 10",
+            "value": "#237E78"
+          },
+          "value": "#8D9CA4"
+        },
+        "tooltip": [
+          {
+            "field": "REEF_NAME",
+            "title": "Reef"
+          },
+          {
+            "field": "YEAR",
+            "title": "Year"
+          },
+          {
+            "field": "COVER",
+            "title": "Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "CHANGE",
+            "title": "Change (pp)",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 45,
+        "opacity": 0.72
+      },
+      "encoding": {
+        "x": {
+          "field": "YEAR",
+          "type": "ordinal",
+          "sort": [
+            2022,
+            2023
+          ]
+        },
+        "y": {
+          "field": "COVER",
+          "type": "quantitative"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.CHANGE >= 10",
+            "value": "#237E78"
+          },
+          "value": "#8D9CA4"
+        },
+        "tooltip": [
+          {
+            "field": "REEF_NAME",
+            "title": "Reef"
+          },
+          {
+            "field": "COVER",
+            "title": "Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "CHANGE",
+            "title": "Change (pp)",
+            "format": "+.1f"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/reef_coral_by_shelf_2022_23.csv"
+  },
+  "width": 650,
+  "height": 310,
+  "title": {
+    "text": "06  How variable is coral cover across reef shelves?",
+    "subtitle": "LTMP reef-level means, 2022\u201323",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "mark": {
+    "type": "boxplot",
+    "extent": 1.5,
+    "size": 65
+  },
+  "encoding": {
+    "x": {
+      "field": "SHELF",
+      "type": "nominal",
+      "title": "Shelf (I = inshore, M = mid, O = outer)",
+      "sort": [
+        "I",
+        "M",
+        "O"
+      ]
+    },
+    "y": {
+      "field": "COVER",
+      "type": "quantitative",
+      "title": "Mean hard coral cover (%)",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      }
+    },
+    "color": {
+      "field": "SHELF",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "I",
+          "M",
+          "O"
+        ],
+        "range": [
+          "#D48B55",
+          "#6C9BA6",
+          "#786DA8"
+        ]
+      },
+      "legend": null
+    }
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}

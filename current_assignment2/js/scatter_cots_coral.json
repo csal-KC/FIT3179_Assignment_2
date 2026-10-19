@@ -1,0 +1,96 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/cots_coral_scatter_2023.csv"
+  },
+  "width": 650,
+  "height": 330,
+  "title": {
+    "text": "07  Is COTS abundance associated with coral cover?",
+    "subtitle": "LTMP manta-tow reefs sampled in 2023; descriptive association only",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "mark": {
+    "type": "circle",
+    "size": 85,
+    "opacity": 0.65
+  },
+  "encoding": {
+    "x": {
+      "field": "MEAN_COTS_PER_TOW",
+      "type": "quantitative",
+      "title": "Mean COTS per tow",
+      "scale": {
+        "zero": true
+      }
+    },
+    "y": {
+      "field": "MEAN_LIVE_CORAL",
+      "type": "quantitative",
+      "title": "Mean live coral cover (%)",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      }
+    },
+    "color": {
+      "field": "SHELF",
+      "type": "nominal",
+      "title": "Shelf",
+      "scale": {
+        "domain": [
+          "I",
+          "M",
+          "O"
+        ],
+        "range": [
+          "#D48B55",
+          "#6C9BA6",
+          "#786DA8"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "REEF_NAME",
+        "type": "nominal",
+        "title": "Reef"
+      },
+      {
+        "field": "MEAN_COTS_PER_TOW",
+        "type": "quantitative",
+        "title": "COTS per tow"
+      },
+      {
+        "field": "MEAN_LIVE_CORAL",
+        "type": "quantitative",
+        "title": "Live coral (%)"
+      },
+      {
+        "field": "TOWS",
+        "type": "quantitative",
+        "title": "Tows"
+      }
+    ]
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}

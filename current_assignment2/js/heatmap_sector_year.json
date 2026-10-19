@@ -1,0 +1,104 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/sector_year_hard_coral.csv"
+  },
+  "width": 650,
+  "height": 290,
+  "title": {
+    "text": "05  How does coral cover vary by sector and year?",
+    "subtitle": "LTMP 2015\u201323; grey = fewer than 3 sampled reefs (or no observations)",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "YEAR",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "SECTOR",
+      "type": "nominal",
+      "title": "AIMS sector",
+      "sort": "ascending"
+    },
+    "color": {
+      "condition": {
+        "test": "isValid(datum.MEAN_COVER)",
+        "field": "MEAN_COVER",
+        "type": "quantitative",
+        "title": "Mean hard coral cover (%)",
+        "scale": {
+          "scheme": "yellowgreenblue",
+          "domain": [
+            0,
+            100
+          ]
+        }
+      },
+      "value": "#E9E9E9"
+    },
+    "tooltip": [
+      {
+        "field": "SECTOR",
+        "title": "Sector"
+      },
+      {
+        "field": "YEAR",
+        "title": "Year"
+      },
+      {
+        "field": "MEAN_COVER",
+        "title": "Mean cover (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "REEFS",
+        "title": "Reefs sampled"
+      }
+    ]
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  },
+  "transform": [
+    {
+      "impute": "MEAN_COVER",
+      "key": "YEAR",
+      "groupby": [
+        "SECTOR"
+      ],
+      "keyvals": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    }
+  ]
+}

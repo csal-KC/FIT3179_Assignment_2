@@ -1,0 +1,104 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "white",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12
+    }
+  },
+  "data": {
+    "url": "data/reef_cover_distribution_2019_2023.csv"
+  },
+  "title": {
+    "text": "11  How did the distribution of reef coral cover change?",
+    "subtitle": "LTMP reef means, 2019\u201323; different reefs may be surveyed each year",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "facet": {
+    "row": {
+      "field": "YEAR",
+      "type": "ordinal",
+      "title": "Survey year",
+      "sort": "ascending",
+      "header": {
+        "labelAngle": 0,
+        "labelFontSize": 12
+      }
+    }
+  },
+  "spec": {
+    "width": 620,
+    "height": 75,
+    "transform": [
+      {
+        "density": "COVER",
+        "groupby": [
+          "YEAR"
+        ],
+        "extent": [
+          0,
+          100
+        ],
+        "steps": 120,
+        "as": [
+          "cover_value",
+          "density_value"
+        ]
+      }
+    ],
+    "mark": {
+      "type": "area",
+      "color": "#418F96",
+      "opacity": 0.75,
+      "line": {
+        "color": "#1A6875"
+      }
+    },
+    "encoding": {
+      "x": {
+        "field": "cover_value",
+        "type": "quantitative",
+        "title": "Mean hard coral cover (%)",
+        "scale": {
+          "domain": [
+            0,
+            100
+          ]
+        }
+      },
+      "y": {
+        "field": "density_value",
+        "type": "quantitative",
+        "title": null,
+        "axis": null
+      },
+      "tooltip": [
+        {
+          "field": "YEAR",
+          "title": "Year"
+        },
+        {
+          "field": "cover_value",
+          "title": "Cover (%)",
+          "format": ".0f"
+        },
+        {
+          "field": "density_value",
+          "title": "Estimated density",
+          "format": ".3f"
+        }
+      ]
+    }
+  }
+}
