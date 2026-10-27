@@ -1,0 +1,209 @@
+:root {
+  --ink:#173a3d;
+  --sea:#197d85;
+  --cream:#f4f8f6;
+  --muted:#52696b
+}
+
+* {
+  box-sizing:border-box
+}
+
+html {
+  scroll-behavior:smooth
+}
+
+body {
+  margin:0;
+  background:var(--cream);
+  font:16px/1.7 system-ui,-apple-system,Segoe UI,sans-serif;
+  color:var(--ink)
+}
+
+main {
+  max-width:1120px;
+  margin:auto
+}
+
+header {
+  padding:62px 44px 48px;
+  background:#dbece8;
+}
+
+h1 {
+  font-size:clamp(36px,6vw,66px);
+  line-height:1.1;
+  letter-spacing:-2px;
+  max-width:800px;
+  margin:12px 0 25px
+}
+
+h2 {
+  font-size:clamp(26px,3.8vw,38px);
+  line-height:1.2;
+  margin:8px 0 18px
+}
+
+h3 {
+  margin:0 0 8px
+}
+
+.eyebrow,.kicker {
+  font-size:12px;
+  letter-spacing:2.4px;
+  font-weight:800;
+  color:#126a72
+}
+
+.intro {
+  font-size:21px;
+  max-width:690px
+}
+
+nav {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:25px
+}
+
+nav a {
+  color:#135d63;
+  background:#fff;
+  border-radius:20px;
+  padding:5px 14px;
+  text-decoration:none;
+  font-weight:650;
+  font-size:13px
+}
+
+section {
+  padding:42px 44px 28px;
+  border-bottom:1px solid #d6e2de;
+  background:#fff
+}
+
+section>p:not(.kicker) {
+  max-width:740px;
+  color:var(--muted)
+}
+
+.viz {
+  margin:14px 0;
+  padding:8px;
+  background:#fff;
+  overflow-x:auto
+}
+
+.bridge {
+  margin:28px 0 0!important;
+  padding:18px 24px;
+  border-left:4px solid var(--sea);
+  background:#edf6f3;
+  color:var(--ink)!important;
+  font-weight:600
+}
+
+footer {
+  padding:35px 40px 60px;
+  background:#e8f1ee;
+  font-size:13px;
+  color:#41595a
+}
+
+footer p {
+  max-width:820px
+}
+
+@media (max-width: 700px) {
+  header, section, footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  
+}
+
+  .viz {
+    padding: 0;
+  
+}
+}
+
+/* Readability improvements based on peer and tutor feedback */
+h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; }
+h1 { letter-spacing: -1.1px; }
+section > p:not(.kicker) { max-width: 670px; line-height: 1.55; }
+.chart-note { font-size: 14px; color: #52696b; margin: 8px 0 0; }
+.viz .vega-embed { max-width: 100%; }
+@media (max-width: 700px) { section { padding-top: 32px; } }
+
+/* Hover-to-magnify overview + detail map */
+.map-overview-wrapper { position:relative; }
+.reef-zoom-panel {
+  position:absolute;
+  top:55px;
+  right:12px;
+  width:272px;
+  padding:12px 12px 8px;
+  background:#fff;
+  border:1px solid #c9d9d5;
+  border-radius:8px;
+  box-shadow:0 5px 20px rgba(23,58,61,.16);
+  z-index:3;
+  pointer-events:none;
+}
+.reef-zoom-panel[hidden] { display:none; }
+.reef-zoom-heading { font-size:13px; font-weight:750; color:#173a3d; }
+.reef-zoom-subheading { font-size:12px; color:#52696b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.reef-zoom-caption { font-size:11px; color:#52696b; text-align:center; }
+#reef-zoom-map { width:248px; min-height:230px; }
+@media(max-width:700px) {
+  .reef-zoom-panel { top:10px; right:4px; width:230px; padding:8px; }
+  #reef-zoom-map { transform:scale(.85); transform-origin:top left; height:205px; }
+}
+
+/* Position the detail map below the main legend, without adding page height. */
+.map-overview-wrapper { position:relative; display:block; }
+.reef-zoom-panel, .reef-zoom-panel[hidden] {
+  position:absolute;
+  top:185px;
+  right:12px;
+  width:300px;
+  max-width:calc(100% - 24px);
+  margin:0;
+  box-shadow:0 2px 10px rgba(23,58,61,.12);
+  pointer-events:none;
+}
+.reef-zoom-panel[hidden] { display:none; }
+@media(max-width:700px) {
+  .reef-zoom-panel { top:170px; right:4px; width:230px; }
+}
+.chart-controls { display:flex; align-items:center; gap:14px; margin:12px 0 0; font-size:13px; color:#52696b; }
+.chart-controls button { background:#197d85; color:white; border:0; border-radius:6px; padding:8px 16px; cursor:pointer; font:inherit; font-weight:600; }
+.chart-controls button:disabled { opacity:.5; cursor:default; }
+@media(max-width:700px) { .reef-zoom-panel { width:270px; } #reef-zoom-map { transform:none; height:auto; } }
+
+#coral-zoom-map {width:248px;min-height:230px;}
+@media(max-width:700px) {#coral-zoom-map {width:225px;min-height:215px;}}
+
+/* Final revision: readable notes, chart separation and accessible controls */
+#patterns .viz + .chart-note, #drivers .viz + .chart-note, #changes .viz + p { margin-top:24px; }
+#patterns .viz, #drivers .viz, #comparison .viz, #changes .viz { margin-top:22px; margin-bottom:36px; }
+#patterns .viz:not(:first-of-type), #drivers .viz:not(:first-of-type), #comparison .viz:not(:first-of-type), #changes .viz:not(:first-of-type) { margin-top:30px; }
+section .chart-note { font-size:16px; line-height:1.55; }
+.sector-key { max-width:850px!important; font-size:14px!important; line-height:1.9!important; }
+.slope-key { display:flex; flex-wrap:wrap; align-items:center; gap:9px; font-size:14px!important; }
+.key-dot { display:inline-block; width:11px; height:11px; border-radius:50%; margin-left:8px; }
+.key-dot.gain {background:#009E73;} .key-dot.loss {background:#D55E00;} .key-dot.neutral {background:#B6C1C5;}
+footer {font-size:14px;line-height:1.7;} footer h3 {margin-top:20px;} footer a {color:#075B77;text-decoration:underline;} footer ul {padding-left:20px;max-width:900px;} footer li {margin:7px 0;}
+@media (max-width:700px) {section .chart-note{font-size:15px;} .viz{overflow-x:auto;}}
+
+/* Review fixes: explicit chart separation and readable notes */
+.chart-break { height: 42px; clear: both; }
+#patterns .viz + .chart-note, #drivers .viz + .chart-note, #changes .viz + .chart-note { margin-top: 20px; }
+#patterns .chart-note + .chart-note, #drivers .chart-note + .chart-note, #changes .chart-note + .chart-note { margin-top: 10px; }
+@media (max-width:700px) {.chart-break {height:30px;}}
+
+/* Final review: Chart 12 findings appear before the plot. */
+.slope-findings { margin: 16px 0 18px; }
+.slope-findings .chart-note { margin: 0 0 7px; font-weight: 400; }
+.slope-findings + .viz { margin-top: 0; }

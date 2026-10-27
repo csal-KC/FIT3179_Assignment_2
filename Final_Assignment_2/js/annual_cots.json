@@ -1,0 +1,77 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/annual_cots_detection.csv"
+  },
+  "width": 650,
+  "height": 280,
+  "title": {
+    "text": "09  How often were COTS detected over time?",
+    "subtitle": "LTMP manta-tow reefs, 2014–23; survey coverage varies by year",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "mark": {
+    "type": "bar",
+    "color": "#6C4C9C",
+    "width": 28
+  },
+  "encoding": {
+    "x": {
+      "field": "REPORT_YEAR",
+      "type": "ordinal",
+      "title": "Survey year"
+    },
+    "y": {
+      "field": "PCT",
+      "type": "quantitative",
+      "title": "Surveyed reefs with COTS (%)",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "REPORT_YEAR",
+        "type": "quantitative",
+        "title": "Year"
+      },
+      {
+        "field": "PCT",
+        "type": "quantitative",
+        "title": "Detected (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "DETECTED",
+        "type": "quantitative",
+        "title": "Reefs with COTS"
+      },
+      {
+        "field": "REEFS",
+        "type": "quantitative",
+        "title": "Surveyed Reefs"
+      }
+    ]
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}

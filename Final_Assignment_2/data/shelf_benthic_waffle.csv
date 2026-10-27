@@ -1,0 +1,301 @@
+SHELF,COL,ROW,GROUP_CODE,PCT,SHELF_NAME
+I,0,0,Hard Coral,27.4,Inshore
+I,1,0,Hard Coral,27.4,Inshore
+I,2,0,Hard Coral,27.4,Inshore
+I,3,0,Hard Coral,27.4,Inshore
+I,4,0,Hard Coral,27.4,Inshore
+I,5,0,Hard Coral,27.4,Inshore
+I,6,0,Hard Coral,27.4,Inshore
+I,7,0,Hard Coral,27.4,Inshore
+I,8,0,Hard Coral,27.4,Inshore
+I,9,0,Hard Coral,27.4,Inshore
+I,0,1,Hard Coral,27.4,Inshore
+I,1,1,Hard Coral,27.4,Inshore
+I,2,1,Hard Coral,27.4,Inshore
+I,3,1,Hard Coral,27.4,Inshore
+I,4,1,Hard Coral,27.4,Inshore
+I,5,1,Hard Coral,27.4,Inshore
+I,6,1,Hard Coral,27.4,Inshore
+I,7,1,Hard Coral,27.4,Inshore
+I,8,1,Hard Coral,27.4,Inshore
+I,9,1,Hard Coral,27.4,Inshore
+I,0,2,Hard Coral,27.4,Inshore
+I,1,2,Hard Coral,27.4,Inshore
+I,2,2,Hard Coral,27.4,Inshore
+I,3,2,Hard Coral,27.4,Inshore
+I,4,2,Hard Coral,27.4,Inshore
+I,5,2,Hard Coral,27.4,Inshore
+I,6,2,Hard Coral,27.4,Inshore
+I,7,2,Soft Coral,9.3,Inshore
+I,8,2,Soft Coral,9.3,Inshore
+I,9,2,Soft Coral,9.3,Inshore
+I,0,3,Soft Coral,9.3,Inshore
+I,1,3,Soft Coral,9.3,Inshore
+I,2,3,Soft Coral,9.3,Inshore
+I,3,3,Soft Coral,9.3,Inshore
+I,4,3,Soft Coral,9.3,Inshore
+I,5,3,Soft Coral,9.3,Inshore
+I,6,3,Algae,51.5,Inshore
+I,7,3,Algae,51.5,Inshore
+I,8,3,Algae,51.5,Inshore
+I,9,3,Algae,51.5,Inshore
+I,0,4,Algae,51.5,Inshore
+I,1,4,Algae,51.5,Inshore
+I,2,4,Algae,51.5,Inshore
+I,3,4,Algae,51.5,Inshore
+I,4,4,Algae,51.5,Inshore
+I,5,4,Algae,51.5,Inshore
+I,6,4,Algae,51.5,Inshore
+I,7,4,Algae,51.5,Inshore
+I,8,4,Algae,51.5,Inshore
+I,9,4,Algae,51.5,Inshore
+I,0,5,Algae,51.5,Inshore
+I,1,5,Algae,51.5,Inshore
+I,2,5,Algae,51.5,Inshore
+I,3,5,Algae,51.5,Inshore
+I,4,5,Algae,51.5,Inshore
+I,5,5,Algae,51.5,Inshore
+I,6,5,Algae,51.5,Inshore
+I,7,5,Algae,51.5,Inshore
+I,8,5,Algae,51.5,Inshore
+I,9,5,Algae,51.5,Inshore
+I,0,6,Algae,51.5,Inshore
+I,1,6,Algae,51.5,Inshore
+I,2,6,Algae,51.5,Inshore
+I,3,6,Algae,51.5,Inshore
+I,4,6,Algae,51.5,Inshore
+I,5,6,Algae,51.5,Inshore
+I,6,6,Algae,51.5,Inshore
+I,7,6,Algae,51.5,Inshore
+I,8,6,Algae,51.5,Inshore
+I,9,6,Algae,51.5,Inshore
+I,0,7,Algae,51.5,Inshore
+I,1,7,Algae,51.5,Inshore
+I,2,7,Algae,51.5,Inshore
+I,3,7,Algae,51.5,Inshore
+I,4,7,Algae,51.5,Inshore
+I,5,7,Algae,51.5,Inshore
+I,6,7,Algae,51.5,Inshore
+I,7,7,Algae,51.5,Inshore
+I,8,7,Algae,51.5,Inshore
+I,9,7,Algae,51.5,Inshore
+I,0,8,Algae,51.5,Inshore
+I,1,8,Algae,51.5,Inshore
+I,2,8,Algae,51.5,Inshore
+I,3,8,Algae,51.5,Inshore
+I,4,8,Algae,51.5,Inshore
+I,5,8,Algae,51.5,Inshore
+I,6,8,Algae,51.5,Inshore
+I,7,8,Algae,51.5,Inshore
+I,8,8,Other,11.8,Inshore
+I,9,8,Other,11.8,Inshore
+I,0,9,Other,11.8,Inshore
+I,1,9,Other,11.8,Inshore
+I,2,9,Other,11.8,Inshore
+I,3,9,Other,11.8,Inshore
+I,4,9,Other,11.8,Inshore
+I,5,9,Other,11.8,Inshore
+I,6,9,Other,11.8,Inshore
+I,7,9,Other,11.8,Inshore
+I,8,9,Other,11.8,Inshore
+I,9,9,Other,11.8,Inshore
+M,0,0,Hard Coral,20.6,Mid-shelf
+M,1,0,Hard Coral,20.6,Mid-shelf
+M,2,0,Hard Coral,20.6,Mid-shelf
+M,3,0,Hard Coral,20.6,Mid-shelf
+M,4,0,Hard Coral,20.6,Mid-shelf
+M,5,0,Hard Coral,20.6,Mid-shelf
+M,6,0,Hard Coral,20.6,Mid-shelf
+M,7,0,Hard Coral,20.6,Mid-shelf
+M,8,0,Hard Coral,20.6,Mid-shelf
+M,9,0,Hard Coral,20.6,Mid-shelf
+M,0,1,Hard Coral,20.6,Mid-shelf
+M,1,1,Hard Coral,20.6,Mid-shelf
+M,2,1,Hard Coral,20.6,Mid-shelf
+M,3,1,Hard Coral,20.6,Mid-shelf
+M,4,1,Hard Coral,20.6,Mid-shelf
+M,5,1,Hard Coral,20.6,Mid-shelf
+M,6,1,Hard Coral,20.6,Mid-shelf
+M,7,1,Hard Coral,20.6,Mid-shelf
+M,8,1,Hard Coral,20.6,Mid-shelf
+M,9,1,Hard Coral,20.6,Mid-shelf
+M,0,2,Hard Coral,20.6,Mid-shelf
+M,1,2,Soft Coral,5.6,Mid-shelf
+M,2,2,Soft Coral,5.6,Mid-shelf
+M,3,2,Soft Coral,5.6,Mid-shelf
+M,4,2,Soft Coral,5.6,Mid-shelf
+M,5,2,Soft Coral,5.6,Mid-shelf
+M,6,2,Algae,64.6,Mid-shelf
+M,7,2,Algae,64.6,Mid-shelf
+M,8,2,Algae,64.6,Mid-shelf
+M,9,2,Algae,64.6,Mid-shelf
+M,0,3,Algae,64.6,Mid-shelf
+M,1,3,Algae,64.6,Mid-shelf
+M,2,3,Algae,64.6,Mid-shelf
+M,3,3,Algae,64.6,Mid-shelf
+M,4,3,Algae,64.6,Mid-shelf
+M,5,3,Algae,64.6,Mid-shelf
+M,6,3,Algae,64.6,Mid-shelf
+M,7,3,Algae,64.6,Mid-shelf
+M,8,3,Algae,64.6,Mid-shelf
+M,9,3,Algae,64.6,Mid-shelf
+M,0,4,Algae,64.6,Mid-shelf
+M,1,4,Algae,64.6,Mid-shelf
+M,2,4,Algae,64.6,Mid-shelf
+M,3,4,Algae,64.6,Mid-shelf
+M,4,4,Algae,64.6,Mid-shelf
+M,5,4,Algae,64.6,Mid-shelf
+M,6,4,Algae,64.6,Mid-shelf
+M,7,4,Algae,64.6,Mid-shelf
+M,8,4,Algae,64.6,Mid-shelf
+M,9,4,Algae,64.6,Mid-shelf
+M,0,5,Algae,64.6,Mid-shelf
+M,1,5,Algae,64.6,Mid-shelf
+M,2,5,Algae,64.6,Mid-shelf
+M,3,5,Algae,64.6,Mid-shelf
+M,4,5,Algae,64.6,Mid-shelf
+M,5,5,Algae,64.6,Mid-shelf
+M,6,5,Algae,64.6,Mid-shelf
+M,7,5,Algae,64.6,Mid-shelf
+M,8,5,Algae,64.6,Mid-shelf
+M,9,5,Algae,64.6,Mid-shelf
+M,0,6,Algae,64.6,Mid-shelf
+M,1,6,Algae,64.6,Mid-shelf
+M,2,6,Algae,64.6,Mid-shelf
+M,3,6,Algae,64.6,Mid-shelf
+M,4,6,Algae,64.6,Mid-shelf
+M,5,6,Algae,64.6,Mid-shelf
+M,6,6,Algae,64.6,Mid-shelf
+M,7,6,Algae,64.6,Mid-shelf
+M,8,6,Algae,64.6,Mid-shelf
+M,9,6,Algae,64.6,Mid-shelf
+M,0,7,Algae,64.6,Mid-shelf
+M,1,7,Algae,64.6,Mid-shelf
+M,2,7,Algae,64.6,Mid-shelf
+M,3,7,Algae,64.6,Mid-shelf
+M,4,7,Algae,64.6,Mid-shelf
+M,5,7,Algae,64.6,Mid-shelf
+M,6,7,Algae,64.6,Mid-shelf
+M,7,7,Algae,64.6,Mid-shelf
+M,8,7,Algae,64.6,Mid-shelf
+M,9,7,Algae,64.6,Mid-shelf
+M,0,8,Algae,64.6,Mid-shelf
+M,1,8,Algae,64.6,Mid-shelf
+M,2,8,Algae,64.6,Mid-shelf
+M,3,8,Algae,64.6,Mid-shelf
+M,4,8,Algae,64.6,Mid-shelf
+M,5,8,Algae,64.6,Mid-shelf
+M,6,8,Algae,64.6,Mid-shelf
+M,7,8,Algae,64.6,Mid-shelf
+M,8,8,Algae,64.6,Mid-shelf
+M,9,8,Algae,64.6,Mid-shelf
+M,0,9,Algae,64.6,Mid-shelf
+M,1,9,Other,9.3,Mid-shelf
+M,2,9,Other,9.3,Mid-shelf
+M,3,9,Other,9.3,Mid-shelf
+M,4,9,Other,9.3,Mid-shelf
+M,5,9,Other,9.3,Mid-shelf
+M,6,9,Other,9.3,Mid-shelf
+M,7,9,Other,9.3,Mid-shelf
+M,8,9,Other,9.3,Mid-shelf
+M,9,9,Other,9.3,Mid-shelf
+O,0,0,Hard Coral,37.2,Outer Shelf
+O,1,0,Hard Coral,37.2,Outer Shelf
+O,2,0,Hard Coral,37.2,Outer Shelf
+O,3,0,Hard Coral,37.2,Outer Shelf
+O,4,0,Hard Coral,37.2,Outer Shelf
+O,5,0,Hard Coral,37.2,Outer Shelf
+O,6,0,Hard Coral,37.2,Outer Shelf
+O,7,0,Hard Coral,37.2,Outer Shelf
+O,8,0,Hard Coral,37.2,Outer Shelf
+O,9,0,Hard Coral,37.2,Outer Shelf
+O,0,1,Hard Coral,37.2,Outer Shelf
+O,1,1,Hard Coral,37.2,Outer Shelf
+O,2,1,Hard Coral,37.2,Outer Shelf
+O,3,1,Hard Coral,37.2,Outer Shelf
+O,4,1,Hard Coral,37.2,Outer Shelf
+O,5,1,Hard Coral,37.2,Outer Shelf
+O,6,1,Hard Coral,37.2,Outer Shelf
+O,7,1,Hard Coral,37.2,Outer Shelf
+O,8,1,Hard Coral,37.2,Outer Shelf
+O,9,1,Hard Coral,37.2,Outer Shelf
+O,0,2,Hard Coral,37.2,Outer Shelf
+O,1,2,Hard Coral,37.2,Outer Shelf
+O,2,2,Hard Coral,37.2,Outer Shelf
+O,3,2,Hard Coral,37.2,Outer Shelf
+O,4,2,Hard Coral,37.2,Outer Shelf
+O,5,2,Hard Coral,37.2,Outer Shelf
+O,6,2,Hard Coral,37.2,Outer Shelf
+O,7,2,Hard Coral,37.2,Outer Shelf
+O,8,2,Hard Coral,37.2,Outer Shelf
+O,9,2,Hard Coral,37.2,Outer Shelf
+O,0,3,Hard Coral,37.2,Outer Shelf
+O,1,3,Hard Coral,37.2,Outer Shelf
+O,2,3,Hard Coral,37.2,Outer Shelf
+O,3,3,Hard Coral,37.2,Outer Shelf
+O,4,3,Hard Coral,37.2,Outer Shelf
+O,5,3,Hard Coral,37.2,Outer Shelf
+O,6,3,Hard Coral,37.2,Outer Shelf
+O,7,3,Soft Coral,9.4,Outer Shelf
+O,8,3,Soft Coral,9.4,Outer Shelf
+O,9,3,Soft Coral,9.4,Outer Shelf
+O,0,4,Soft Coral,9.4,Outer Shelf
+O,1,4,Soft Coral,9.4,Outer Shelf
+O,2,4,Soft Coral,9.4,Outer Shelf
+O,3,4,Soft Coral,9.4,Outer Shelf
+O,4,4,Soft Coral,9.4,Outer Shelf
+O,5,4,Soft Coral,9.4,Outer Shelf
+O,6,4,Soft Coral,9.4,Outer Shelf
+O,7,4,Algae,49.0,Outer Shelf
+O,8,4,Algae,49.0,Outer Shelf
+O,9,4,Algae,49.0,Outer Shelf
+O,0,5,Algae,49.0,Outer Shelf
+O,1,5,Algae,49.0,Outer Shelf
+O,2,5,Algae,49.0,Outer Shelf
+O,3,5,Algae,49.0,Outer Shelf
+O,4,5,Algae,49.0,Outer Shelf
+O,5,5,Algae,49.0,Outer Shelf
+O,6,5,Algae,49.0,Outer Shelf
+O,7,5,Algae,49.0,Outer Shelf
+O,8,5,Algae,49.0,Outer Shelf
+O,9,5,Algae,49.0,Outer Shelf
+O,0,6,Algae,49.0,Outer Shelf
+O,1,6,Algae,49.0,Outer Shelf
+O,2,6,Algae,49.0,Outer Shelf
+O,3,6,Algae,49.0,Outer Shelf
+O,4,6,Algae,49.0,Outer Shelf
+O,5,6,Algae,49.0,Outer Shelf
+O,6,6,Algae,49.0,Outer Shelf
+O,7,6,Algae,49.0,Outer Shelf
+O,8,6,Algae,49.0,Outer Shelf
+O,9,6,Algae,49.0,Outer Shelf
+O,0,7,Algae,49.0,Outer Shelf
+O,1,7,Algae,49.0,Outer Shelf
+O,2,7,Algae,49.0,Outer Shelf
+O,3,7,Algae,49.0,Outer Shelf
+O,4,7,Algae,49.0,Outer Shelf
+O,5,7,Algae,49.0,Outer Shelf
+O,6,7,Algae,49.0,Outer Shelf
+O,7,7,Algae,49.0,Outer Shelf
+O,8,7,Algae,49.0,Outer Shelf
+O,9,7,Algae,49.0,Outer Shelf
+O,0,8,Algae,49.0,Outer Shelf
+O,1,8,Algae,49.0,Outer Shelf
+O,2,8,Algae,49.0,Outer Shelf
+O,3,8,Algae,49.0,Outer Shelf
+O,4,8,Algae,49.0,Outer Shelf
+O,5,8,Algae,49.0,Outer Shelf
+O,6,8,Algae,49.0,Outer Shelf
+O,7,8,Algae,49.0,Outer Shelf
+O,8,8,Algae,49.0,Outer Shelf
+O,9,8,Algae,49.0,Outer Shelf
+O,0,9,Algae,49.0,Outer Shelf
+O,1,9,Algae,49.0,Outer Shelf
+O,2,9,Algae,49.0,Outer Shelf
+O,3,9,Algae,49.0,Outer Shelf
+O,4,9,Algae,49.0,Outer Shelf
+O,5,9,Algae,49.0,Outer Shelf
+O,6,9,Other,4.4,Outer Shelf
+O,7,9,Other,4.4,Outer Shelf
+O,8,9,Other,4.4,Outer Shelf
+O,9,9,Other,4.4,Outer Shelf

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 660,
+  "height": 490,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      148.4,
+      -17.9
+    ],
+    "scale": 1650
+  },
+  "title": {
+    "text": "01  Where are reefs monitored?",
+    "subtitle": "Two LTMP survey methods; latest recorded reef position for each method",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e5ece8",
+        "stroke": "#b7c7c3",
+        "strokeWidth": 0.6
+      }
+    },
+    {
+      "data": {
+        "url": "data/monitoring_footprint.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "size": 31,
+        "opacity": 0.65,
+        "stroke": "white",
+        "strokeWidth": 0.3
+      },
+      "encoding": {
+        "longitude": {
+          "field": "LONGITUDE",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "LATITUDE",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "PROGRAM",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Manta tow",
+              "Site transect"
+            ],
+            "range": [
+              "#276C9A",
+              "#D6A04B"
+            ]
+          },
+          "legend": {
+            "title": "Survey method"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "REEF_NAME",
+            "title": "Reef"
+          },
+          {
+            "field": "PROGRAM",
+            "title": "Survey method"
+          },
+          {
+            "field": "LAST_YEAR",
+            "title": "Latest year"
+          }
+        ]
+      }
+    }
+  ]
+}

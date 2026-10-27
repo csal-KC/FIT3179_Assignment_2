@@ -1,0 +1,91 @@
+SECTOR,SECTOR_NAME,YEAR,MEAN_COVER,REEFS,COVER_LABEL,REEFS_LABEL,HAS_DATA
+CA,Cairns,2015,20.166060606060608,11,20.2%,11,1
+CA,Cairns,2016,18.755454545454544,11,18.8%,11,1
+CA,Cairns,2017,11.708666666666666,5,11.7%,5,1
+CA,Cairns,2018,,,Not Available,Not Available,0
+CA,Cairns,2019,13.40814814814815,9,13.4%,9,1
+CA,Cairns,2020,15.648333333333332,5,15.6%,5,1
+CA,Cairns,2021,20.230416666666667,8,20.2%,8,1
+CA,Cairns,2022,26.448888888888888,6,26.4%,6,1
+CA,Cairns,2023,27.351666666666667,4,27.4%,4,1
+CB,Capricorn–Bunker,2015,35.175000000000004,8,35.2%,8,1
+CB,Capricorn–Bunker,2016,,,Not Available,Not Available,0
+CB,Capricorn–Bunker,2017,41.755833333333335,10,41.8%,10,1
+CB,Capricorn–Bunker,2018,62.971666666666664,4,63.0%,4,1
+CB,Capricorn–Bunker,2019,,,Not Available,Not Available,0
+CB,Capricorn–Bunker,2020,41.102037037037036,9,41.1%,9,1
+CB,Capricorn–Bunker,2021,54.13809523809523,7,54.1%,7,1
+CB,Capricorn–Bunker,2022,48.07333333333333,7,48.1%,7,1
+CB,Capricorn–Bunker,2023,,,Not Available,Not Available,0
+CG,Cape Grenville,2015,,,Not Available,Not Available,0
+CG,Cape Grenville,2016,,,Not Available,Not Available,0
+CG,Cape Grenville,2017,,,Not Available,Not Available,0
+CG,Cape Grenville,2018,,,Not Available,Not Available,0
+CG,Cape Grenville,2019,18.218333333333334,6,18.2%,6,1
+CG,Cape Grenville,2020,21.74888888888889,6,21.7%,6,1
+CG,Cape Grenville,2021,18.108888888888888,6,18.1%,6,1
+CG,Cape Grenville,2022,19.704444444444444,6,19.7%,6,1
+CG,Cape Grenville,2023,,,Not Available,Not Available,0
+CL,Cooktown / Lizard Island,2015,,,Not Available,Not Available,0
+CL,Cooktown / Lizard Island,2016,7.342083333333333,8,7.3%,8,1
+CL,Cooktown / Lizard Island,2017,,,Not Available,Not Available,0
+CL,Cooktown / Lizard Island,2018,9.759166666666667,8,9.8%,8,1
+CL,Cooktown / Lizard Island,2019,,,Not Available,Not Available,0
+CL,Cooktown / Lizard Island,2020,18.34208333333333,8,18.3%,8,1
+CL,Cooktown / Lizard Island,2021,23.952916666666667,8,24.0%,8,1
+CL,Cooktown / Lizard Island,2022,25.713333333333335,8,25.7%,8,1
+CL,Cooktown / Lizard Island,2023,,,Not Available,Not Available,0
+IN,Innisfail,2015,33.955714285714286,7,34.0%,7,1
+IN,Innisfail,2016,,,Not Available,Not Available,0
+IN,Innisfail,2017,,,Not Available,Not Available,0
+IN,Innisfail,2018,10.797333333333333,5,10.8%,5,1
+IN,Innisfail,2019,,,Not Available,Not Available,0
+IN,Innisfail,2020,10.64952380952381,7,10.6%,7,1
+IN,Innisfail,2021,,,Not Available,Not Available,0
+IN,Innisfail,2022,17.075,4,17.1%,4,1
+IN,Innisfail,2023,18.781666666666666,4,18.8%,4,1
+PC,Princess Charlotte Bay,2015,,,Not Available,Not Available,0
+PC,Princess Charlotte Bay,2016,,,Not Available,Not Available,0
+PC,Princess Charlotte Bay,2017,,,Not Available,Not Available,0
+PC,Princess Charlotte Bay,2018,,,Not Available,Not Available,0
+PC,Princess Charlotte Bay,2019,30.831666666666663,4,30.8%,4,1
+PC,Princess Charlotte Bay,2020,34.05,4,34.0%,4,1
+PC,Princess Charlotte Bay,2021,34.10583333333334,4,34.1%,4,1
+PC,Princess Charlotte Bay,2022,34.33666666666666,4,34.3%,4,1
+PC,Princess Charlotte Bay,2023,,,Not Available,Not Available,0
+PO,Pompey,2015,,,Not Available,Not Available,0
+PO,Pompey,2016,18.541944444444443,12,18.5%,12,1
+PO,Pompey,2017,,,Not Available,Not Available,0
+PO,Pompey,2018,13.644722222222223,12,13.6%,12,1
+PO,Pompey,2019,18.380333333333333,10,18.4%,10,1
+PO,Pompey,2020,,,Not Available,Not Available,0
+PO,Pompey,2021,,,Not Available,Not Available,0
+PO,Pompey,2022,18.922083333333333,8,18.9%,8,1
+PO,Pompey,2023,22.054166666666667,8,22.1%,8,1
+SW,Swains,2015,,,Not Available,Not Available,0
+SW,Swains,2016,38.4775,12,38.5%,12,1
+SW,Swains,2017,38.3552380952381,7,38.4%,7,1
+SW,Swains,2018,25.755,14,25.8%,14,1
+SW,Swains,2019,26.54866666666667,5,26.5%,5,1
+SW,Swains,2020,20.812361111111112,12,20.8%,12,1
+SW,Swains,2021,14.58095238095238,7,14.6%,7,1
+SW,Swains,2022,16.25361111111111,6,16.3%,6,1
+SW,Swains,2023,14.83,3,14.8%,3,1
+TO,Townsville,2015,22.58875,8,22.6%,8,1
+TO,Townsville,2016,21.94027777777778,12,21.9%,12,1
+TO,Townsville,2017,24.804166666666667,8,24.8%,8,1
+TO,Townsville,2018,21.581388888888892,12,21.6%,12,1
+TO,Townsville,2019,22.845238095238095,7,22.8%,7,1
+TO,Townsville,2020,23.53357142857143,14,23.5%,14,1
+TO,Townsville,2021,27.307916666666664,8,27.3%,8,1
+TO,Townsville,2022,29.330000000000002,10,29.3%,10,1
+TO,Townsville,2023,31.24151515151515,11,31.2%,11,1
+WH,Whitsunday,2015,29.083333333333332,9,29.1%,9,1
+WH,Whitsunday,2016,,,Not Available,Not Available,0
+WH,Whitsunday,2017,35.43592592592593,9,35.4%,9,1
+WH,Whitsunday,2018,,,Not Available,Not Available,0
+WH,Whitsunday,2019,23.377916666666668,8,23.4%,8,1
+WH,Whitsunday,2020,,,Not Available,Not Available,0
+WH,Whitsunday,2021,30.869629629629628,9,30.9%,9,1
+WH,Whitsunday,2022,34.2747619047619,7,34.3%,7,1
+WH,Whitsunday,2023,34.51904761904762,7,34.5%,7,1

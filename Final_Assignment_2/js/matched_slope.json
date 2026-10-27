@@ -1,0 +1,180 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "white",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12
+    }
+  },
+  "data": {
+    "url": "data/matched_reefs_2022_2023.csv"
+  },
+  "width": 630,
+  "height": 330,
+  "title": {
+    "text": "12  Which reefs changed between 2022 and 2023?",
+    "subtitle": "LTMP: 32 matched reefs; changes in percentage points (2022–23)",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "opacity": 0.7,
+        "strokeWidth": 1.7
+      },
+      "encoding": {
+        "x": {
+          "field": "YEAR",
+          "type": "ordinal",
+          "sort": [
+            2022,
+            2023
+          ],
+          "title": "Survey year"
+        },
+        "y": {
+          "field": "COVER",
+          "type": "quantitative",
+          "title": "Mean hard coral cover (%)",
+          "scale": {
+            "domain": [
+              0,
+              60
+            ]
+          }
+        },
+        "detail": {
+          "field": "REEF_ID"
+        },
+        "color": {
+          "field": "Change Group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Increase ≥5 points",
+              "Decrease ≥5 points",
+              "Smaller changes"
+            ],
+            "range": [
+              "#009E73",
+              "#D55E00",
+              "#B6C1C5"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom",
+            "direction": "horizontal",
+            "symbolType": "circle",
+            "labelFontSize": 12,
+            "symbolSize": 110,
+            "columns": 3
+          }
+        },
+        "tooltip": [
+          {
+            "field": "REEF_NAME",
+            "title": "Reef"
+          },
+          {
+            "field": "YEAR",
+            "title": "Year"
+          },
+          {
+            "field": "COVER",
+            "title": "Coral Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "CHANGE",
+            "title": "Change (Percentage Points)",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 45,
+        "opacity": 0.85
+      },
+      "encoding": {
+        "x": {
+          "field": "YEAR",
+          "type": "ordinal",
+          "sort": [
+            2022,
+            2023
+          ]
+        },
+        "y": {
+          "field": "COVER",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              60
+            ]
+          }
+        },
+        "color": {
+          "field": "Change Group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Increase ≥5 points",
+              "Decrease ≥5 points",
+              "Smaller changes"
+            ],
+            "range": [
+              "#009E73",
+              "#D55E00",
+              "#B6C1C5"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "REEF_NAME",
+            "title": "Reef"
+          },
+          {
+            "field": "YEAR",
+            "title": "Year"
+          },
+          {
+            "field": "COVER",
+            "title": "Coral Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "CHANGE",
+            "title": "Change (Percentage Points)",
+            "format": "+.1f"
+          }
+        ]
+      }
+    }
+  ],
+  "transform": [
+    {
+      "calculate": "datum.CHANGE >= 5 ? 'Increase ≥5 points' : datum.CHANGE <= -5 ? 'Decrease ≥5 points' : 'Smaller changes'",
+      "as": "Change Group"
+    }
+  ]
+}

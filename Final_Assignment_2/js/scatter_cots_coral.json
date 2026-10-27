@@ -1,0 +1,201 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/cots_coral_scatter_2023.csv"
+  },
+  "width": 650,
+  "height": 310,
+  "title": {
+    "text": "07  Does coral cover differ where COTS are detected?",
+    "subtitle": "2023 surveyed reefs; dots offset to reveal overlap",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 65,
+        "opacity": 0.8,
+        "stroke": "white",
+        "strokeWidth": 0.3
+      },
+      "encoding": {
+        "x": {
+          "field": "X_POSITION",
+          "type": "quantitative",
+          "title": "COTS recorded during survey",
+          "scale": {
+            "domain": [
+              -0.25,
+              1.25
+            ]
+          },
+          "axis": {
+            "values": [
+              0,
+              1
+            ],
+            "labelExpr": "datum.value == 0 ? 'Not detected' : 'Detected'",
+            "format": ".0f",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "MEAN_LIVE_CORAL",
+          "type": "quantitative",
+          "title": "Mean live coral cover (%)",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "color": {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "title": "Reef Shelf",
+          "scale": {
+            "domain": [
+              "Inshore",
+              "Mid-shelf",
+              "Outer Shelf"
+            ],
+            "range": [
+              "#D55E00",
+              "#0072B2",
+              "#CC79A7"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "REEF_NAME",
+            "type": "nominal",
+            "title": "Reef"
+          },
+          {
+            "field": "SHELF_NAME",
+            "title": "Reef Shelf"
+          },
+          {
+            "field": "MEAN_COTS_PER_TOW",
+            "type": "quantitative",
+            "title": "COTS Per Tow",
+            "format": ".2f"
+          },
+          {
+            "field": "MEAN_LIVE_CORAL",
+            "type": "quantitative",
+            "title": "Live Coral Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "TOWS",
+            "type": "quantitative",
+            "title": "Survey Tows"
+          },
+          {
+            "field": "COTS_STATUS",
+            "title": "COTS Detection"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "datum.MEAN_COTS_PER_TOW > 0 ? 'Detected' : 'Not detected'",
+          "as": "COTS_STATUS"
+        },
+        {
+          "calculate": "(datum.MEAN_COTS_PER_TOW > 0 ? 1 : 0) + (random() - 0.5) * 0.14",
+          "as": "X_POSITION"
+        }
+      ]
+    },
+    {
+      "transform": [
+        {
+          "calculate": "datum.MEAN_COTS_PER_TOW > 0 ? 'Detected' : 'Not detected'",
+          "as": "COTS_STATUS"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "median",
+              "field": "MEAN_LIVE_CORAL",
+              "as": "MEDIAN_COVER"
+            }
+          ],
+          "groupby": [
+            "COTS_STATUS"
+          ]
+        },
+        {
+          "calculate": "datum.COTS_STATUS == 'Detected' ? 1 : 0",
+          "as": "X_POSITION"
+        }
+      ],
+      "mark": {
+        "type": "tick",
+        "size": 36,
+        "thickness": 4,
+        "color": "#182E35"
+      },
+      "encoding": {
+        "x": {
+          "field": "X_POSITION",
+          "type": "quantitative",
+          "title": "COTS recorded during survey",
+          "scale": {
+            "domain": [
+              -0.25,
+              1.25
+            ]
+          },
+          "axis": {
+            "values": [
+              0,
+              1
+            ],
+            "labelExpr": "datum.value == 0 ? 'Not detected' : 'Detected'",
+            "format": ".0f",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "MEDIAN_COVER",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "COTS_STATUS",
+            "title": "COTS Detection"
+          },
+          {
+            "field": "MEDIAN_COVER",
+            "title": "Median Coral Cover (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Great Barrier Reef | Coral Health</title>
+
+  <!-- Vega-Lite libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- Website Styling (css) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <!-- Introduction -->
+    <header>
+      <p class="eyebrow">FIT3179 | DATA VISUALISATION 2</p>
+      <h1> The Great Barrier Reef: How is it Changing?</h1>
+      <p class="intro">
+        Explore where reefs are monitored, how coral cover varies, and where
+        crown-of-thorns starfish are detected. Then examine a recent coral-cover trend.
+      </p>
+
+    </header>
+
+    <!-- Map Vis 1: Monitoring Locations -->
+    <section id="coverage">
+      <p class="kicker"> 01 | THE EVIDENCE</p>
+      <h2>First, where do we have observations?</h2>
+      <p>
+        Dots show reefs included in two AIMS monitoring methods.
+        A reef may appear in both datasets. These are surveyed locations,
+        not every reef in the Great Barrier Reef.
+      </p>
+
+      <p class="chart-note">Hover over a survey dot to see its tooltip and a magnified map of nearby reefs.</p>
+      <div class="map-overview-wrapper">
+        <div id="map1_dot_map" class="viz"></div>
+        <aside id="reef-zoom-panel" class="reef-zoom-panel" aria-label="Zoomed map of nearby reef observations" hidden>
+          <div class="reef-zoom-heading">Nearby reef observations</div>
+          <div id="reef-zoom-name" class="reef-zoom-subheading"></div>
+          <div id="reef-zoom-map"></div>
+          <div class="reef-zoom-caption">Magnified area around hovered reef</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Map 2: Hard Coral Cover -->
+    <section id="condition">
+      <p class="kicker"> 02 | CONDITIONS</p>
+      <h2>Hard coral cover differs between surveyed reefs</h2>
+      <p>
+        Larger circles represent higher mean hard coral cover in 2022-23.
+        Circle size does not represent reef size. Only surveyed reefs are shown.
+      </p>
+
+      <p class="chart-note">Hover over a circle to see the reef name and its measured cover.</p>
+      <div class="map-overview-wrapper">
+        <div id="map2_proportional_symbol_map" class="viz"></div>
+        <aside id="coral-zoom-panel" class="reef-zoom-panel" aria-label="Zoomed hard coral cover map" hidden>
+          <div class="reef-zoom-heading">Nearby coral cover observations</div>
+          <div id="coral-zoom-name" class="reef-zoom-subheading"></div>
+          <div id="coral-zoom-map"></div>
+          <div class="reef-zoom-caption">Circle area represents hard coral cover</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Map 3: Crown-of-thorns detections -->
+    <section id="pressure">
+      <p class="kicker">03 | POTENTIAL PRESSURE</p>
+      <h2>Where were crown-of-thorns starfish (COTS) detected?</h2>
+      <p>
+        Each 1° x 1° cell shows the percentage of surveyed reefs with COTS detected in 2023.
+        This measures detection, not starfish abundance or coral loss.
+        Hover to check sample sizes, especially for cells with few surveyed reefs.
+      </p>
+
+      <p class="chart-note">Darker cells indicate a higher detection percentage among surveyed reefs.</p>
+      <div id="map3_choropleth_map" class="viz"></div>
+    </section>
+
+    <!-- Chart 4: More recent monitoring -->
+    <section id="recent">
+      <p class="kicker">04 | A MORE RECENT VIEW</p>
+      <h2>What does the 2025 monitoring series suggest?</h2>
+      <p>
+        This line shows the unweighted mean modelled coral cover across 51
+        consistently observed MMP series from 2021 to 2025.
+        MMP uses different methods and locations from the LTMP maps.
+        The trend is not a reef-wide estimate.
+      </p>
+
+      <p class="chart-note">Watch coral cover change year by year, or replay the animation.</p>
+      <div class="chart-controls"><button id="replay-line" type="button" disabled>Replay Trend</button><span id="line-animation-status" aria-live="polite">Preparing chart...</span></div>
+      <div id="line_chart" class="viz"></div>
+    </section>
+
+    <!-- Additional idioms: distribution, comparisons, time and association -->
+    <section id="patterns">
+      <p class="kicker">05-06 | PATTERNS AND VARIATION</p>
+      <h2>How much does coral cover differ?</h2>
+      <p>Compare sector-year averages, then inspect variation across shelf positions. Grey cells indicate sector-years with fewer than three sampled reefs or no observations.</p>
+      <div id="heatmap_sector_year" class="viz"></div>
+      <p class="chart-note sector-key"><strong>Sector key:</strong> CA = Cairns | CB = Capricorn-Bunker | CG = Cape Grenville | CL = Cooktown / Lizard Island | IN = Innisfail | PC = Princess Charlotte Bay | PO = Pompey | SW = Swains | TO = Townsville | WH = Whitsunday</p>
+      <p class="chart-note">Grey = fewer than three sampled reefs or no observations.</p>
+      <div class="chart-break"></div>
+      <div id="boxplot_shelf" class="viz"></div>
+      <p class="chart-note">The centre line marks the median; boxes show the middle 50%.</p>
+      <p class="chart-note">Whiskers show typical spread; isolated dots are outliers.</p>
+    </section>
+    <section id="drivers">
+      <p class="kicker">07-08 | ASSOCIATIONS AND COMPOSITION</p>
+      <h2>What else is observed on surveyed reefs?</h2>
+      <p>Compare coral cover where COTS were detected versus not detected.</p>
+      <div id="scatter_cots_coral" class="viz"></div>
+      <p class="chart-note">Each dot represents one reef; horizontal offsets reveal overlapping observations. Dark ticks show group medians. Association is not causation.</p>
+      <div class="chart-break"></div>
+      <div id="stacked_shelf" class="viz"></div>
+      <p class="chart-note">Compare Hard Coral, Soft Coral, Algae and Other across reef shelves.</p>
+      <p class="chart-note">Each square represents approximately 1% of average reef cover.</p>
+      
+    </section>
+    <section id="comparison">
+      <p class="kicker">09-10 | TIME AND REGIONAL CONTEXT</p>
+      <h2>How do detections and coral cover compare?</h2>
+      <p>COTS detection rates show the share of surveyed reefs with a positive observation. Different years include different surveyed reefs.</p>
+      <div class="chart-controls"><button id="replay-annual" type="button" disabled>Replay Trend</button><span id="annual-status" aria-live="polite">Preparing animation...</span></div>
+      <div id="annual_cots" class="viz"></div>
+      <p>Dots compare 2025 modelled coral cover across MMP reef zones.</p>
+      <div class="chart-controls"><button id="replay-zone" type="button" disabled>Replay Animation</button><span id="zone-status" aria-live="polite">Preparing animation...</span></div>
+      <div id="mmp_zone" class="viz"></div>
+      <p class="chart-note">Marine Monitoring Program (MMP) and Long-Term Monitoring Program (LTMP) use different datasets.</p>
+    </section>
+
+    <section id="changes">
+      <p class="kicker">11-13 | DISTRIBUTIONS AND MATCHED REEFS</p>
+      <h2>How is coral cover changing across reefs?</h2>
+      <p>Yearly distributions show the range of reef-level coral cover. The sampled reefs can differ by year, so these are not matched trends.</p>
+      <div id="distribution_year" class="viz"></div>
+      <p>To compare the same reefs, the next chart includes only reefs sampled in both 2022 and 2023.</p>
+      <div class="chart-break"></div>
+      <div class="slope-findings" aria-label="Key findings for Chart 12">
+        <p class="chart-note">Of 32 matched reefs, 22 gained coral cover and 10 declined.</p>
+        <p class="chart-note">The largest gain was 9.4 percentage points.</p>
+        <p class="chart-note">The largest decline was 6.3 percentage points.</p>
+      </div>
+      <div id="matched_slope" class="viz"></div>
+      <div class="chart-break"></div>
+      <p>Finally, compare the largest measured increases and decreases. These are changes in coral cover, not evidence of what caused them.</p>
+      <p class="chart-note">Reef labels follow the original AIMS monitoring records.</p>
+      <div class="chart-controls"><button id="replay-change" type="button" disabled>Replay Animation</button><span id="change-status" aria-live="polite">Preparing animation...</span></div>
+      <div id="reef_change_diverging" class="viz"></div>
+    </section>
+
+    <!-- Data sources and licensing -->
+    <footer>
+      <h3>Data Sources &amp; Acknowledgements</h3>
+      <p>Monitoring data: Australian Institute of Marine Science (AIMS).</p>
+      <ul>
+        <li><a href="https://apps.aims.gov.au/metadata/view/a17249ab-5316-4396-bb27-29f2d568f727" target="_blank" rel="noopener">AIMS Long-Term Monitoring Program (LTMP)</a> - reef surveys, coral cover and crown-of-thorns starfish observations.</li>
+        <li><a href="https://apps.aims.gov.au/metadata/view/5a8a4b00-4ade-11dc-8f56-00008a07204e" target="_blank" rel="noopener">AIMS photographic transect monitoring metadata</a> - reef benthic observations.</li>
+        <li><a href="https://researchdata.edu.au/great-barrier-reef-coral-mmp/677405" target="_blank" rel="noopener">Marine Monitoring Program (MMP) - Coral</a> - inshore reef monitoring and modelled coral-cover summaries.</li>
+      </ul>
+      <p>Data were processed and aggregated for educational visualisation. Monitoring methods and surveyed reefs differ across datasets and years; comparisons do not establish causation.</p>
+      <h3>Authorship</h3>
+      <p>Created by: Casey Salpadoru</p>
+      <p>Published: October 2026</p>
+      <p>FIT3179 Data Visualisation 2 - Great Barrier Reef Health</p>
+      <h3>Copyright &amp; Use</h3>
+      <p>© 2026 Casey Salpadoru. Original website design, code, visualisations and commentary. Underlying data remain subject to the rights and licences of their original providers. AIMS LTMP metadata identifies the <a href="https://creativecommons.org/licenses/by-nc/3.0/au/" target="_blank" rel="noopener">CC BY-NC 3.0 Australia</a> licence. Please consult each dataset's source page for its applicable conditions.</p>
+    </footer>
+  </main>
+
+  <!-- Each chart is stored in its own Vega-Lite JSON file. -->
+  <script>
+    // Display the three maps and the supporting line chart.
+    // The first value is the HTML div ID; the second is the JSON filename.
+    const charts = [
+      ["map1_dot_map", "js/map-dot_map.json"],
+      ["map2_proportional_symbol_map", "js/map-proportional_symbol_map.json"],
+      ["map3_choropleth_map", "js/map-choropleth_map.json"]
+    ];
+
+    // vegaEmbed
+    charts.forEach(function(chart) {
+      const divId = chart[0];
+      const jsonFile = chart[1];
+
+      vegaEmbed("#" + divId, jsonFile, {
+        actions: true,
+        renderer: "svg"
+      }).then(function(result) {
+        if (divId === "map1_dot_map") {
+          enableReefMagnifier(result.view);
+        }
+        if (divId === "map2_proportional_symbol_map") {
+          enableCoralMagnifier(result.view);
+        }
+      }).catch(function(error) {
+        document.getElementById(divId).textContent =
+          "Unable to render chart: " + error.message;
+        console.error(error);
+      });
+    });
+
+    // Line chart: progressively reveal one year at a time using Vega changesets.
+    // This preserves the original Vega-Lite axes, line, points and tooltips.
+    async function setupAnimatedLine() {
+      const button = document.getElementById("replay-line");
+      const status = document.getElementById("line-animation-status");
+      try {
+        const responses = await Promise.all([
+          fetch("js/line_chart.json"),
+          fetch("data/mmp_hard_coral_2021_2025.csv")
+        ]);
+        if (responses.some(response => !response.ok)) throw new Error("Could not load line chart data");
+        const spec = await responses[0].json();
+        const csv = await responses[1].text();
+        const rows = vega.read(csv, {type:"csv"})
+          .map(row => ({...row, REPORT_YEAR:Number(row.REPORT_YEAR), MEAN_HARD_CORAL:Number(row.MEAN_HARD_CORAL)}))
+          .filter(row => Number.isFinite(row.REPORT_YEAR) && Number.isFinite(row.MEAN_HARD_CORAL))
+          .sort((a,b) => a.REPORT_YEAR-b.REPORT_YEAR);
+        if (!rows.length) throw new Error("No yearly data found");
+        // Inline values are an empty source that will be populated via changesets.
+        spec.data = {name:"animated_coral", values:[]};
+        // Fix the full-data y domain to avoid a jumping vertical scale.
+        const values = rows.map(row => row.MEAN_HARD_CORAL);
+        const min = Math.min(...values), max = Math.max(...values);
+        const pad = Math.max((max-min)*0.20, 1);
+        spec.encoding.y.scale = {zero:false, domain:[Math.max(0,min-pad), Math.min(100,max+pad)]};
+        spec.encoding.x.scale = {domain:rows.map(row => row.REPORT_YEAR)};
+        const result = await vegaEmbed("#line_chart", spec, {actions:true,renderer:"svg"});
+        const view = result.view;
+        let timer = null;
+        let index = 0;
+        async function replay() {
+          if (timer) clearInterval(timer);
+          button.disabled = true;
+          index = 0;
+          await view.change("animated_coral", vega.changeset().remove(() => true)).runAsync();
+          status.textContent = "Drawing the trend...";
+          async function advance() {
+            if (index >= rows.length) {
+              clearInterval(timer); timer = null;
+              button.disabled = false;
+              status.textContent = "All " + rows.length + " years shown";
+              return;
+            }
+            const row = rows[index++];
+            await view.change("animated_coral", vega.changeset().insert(row)).runAsync();
+            status.textContent = "Showing through " + row.REPORT_YEAR;
+            if (index === rows.length) {
+              clearInterval(timer); timer = null;
+              button.disabled = false;
+              status.textContent = "All " + rows.length + " years shown";
+            }
+          }
+          await advance();
+          timer = setInterval(advance, 850);
+        }
+        button.addEventListener("click", replay);
+        replay();
+      } catch (error) {
+        status.textContent = "Animation unavailable";
+        console.error(error);
+        vegaEmbed("#line_chart", "js/line_chart.json", {actions:true,renderer:"svg"});
+      }
+    }
+    setupAnimatedLine();
+
+    // Additional charts: each Vega-Lite JSON specification is separate.
+    ["heatmap_sector_year", "boxplot_shelf", "scatter_cots_coral",
+     "stacked_shelf",
+     "distribution_year", "matched_slope"].forEach(function(name) {
+      vegaEmbed("#" + name, "js/" + name + ".json", {actions:true, renderer:"svg"})
+        .catch(function(error) {
+          document.getElementById(name).textContent = "Unable to render chart: " + error.message;
+          console.error(error);
+        });
+    });
+
+
+    // Animated quantitative values: grow from zero to their final value.
+    // Keeps the original Vega-Lite mark types and all original data fields.
+    async function setupGrowingChart(name, buttonId, statusId, dataUrl, valueField, duration) {
+      const button = document.getElementById(buttonId);
+      const status = document.getElementById(statusId);
+      try {
+        const responses = await Promise.all([fetch("js/"+name+".json"), fetch(dataUrl)]);
+        if (responses.some(r=>!r.ok)) throw new Error("Unable to load animation files");
+        const spec = await responses[0].json();
+        const raw = vega.read(await responses[1].text(), {type:"csv"});
+        const rows = raw.map(r=>({...r, [valueField]:Number(r[valueField])}));
+        const targets = rows.map(r=>r[valueField]);
+        const dataName = "growing_values";
+        spec.data = {name:dataName, values:rows.map(r=>({...r,[valueField]:0}))};
+        // Layered lollipop specs inherit the same top-level data source.
+        const result = await vegaEmbed("#"+name,spec,{actions:true,renderer:"svg"});
+        const view = result.view;
+        let runNumber = 0;
+        async function replay() {
+          const run = ++runNumber;
+          button.disabled = true;
+          const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const start = performance.now();
+          status.textContent = "Animating values...";
+          async function frame(now) {
+            if (run !== runNumber) return;
+            const t = reduced ? 1 : Math.min(1,(now-start)/duration);
+            const eased = 1-Math.pow(1-t,3);
+            const current = rows.map((r,i)=>({...r,[valueField]:targets[i]*eased}));
+            await view.change(dataName,vega.changeset().remove(()=>true).insert(current)).runAsync();
+            if (run !== runNumber) return;
+            if (t<1) requestAnimationFrame(frame);
+            else {button.disabled=false;status.textContent="Animation complete";}
+          }
+          requestAnimationFrame(frame);
+        }
+        button.addEventListener("click",replay);
+        replay();
+      } catch(error) {
+        status.textContent="Animation unavailable; showing static chart";
+        button.disabled=true;
+        console.error(error);
+        vegaEmbed("#"+name,"js/"+name+".json",{actions:true,renderer:"svg"});
+      }
+    }
+    setupGrowingChart("annual_cots","replay-annual","annual-status","data/annual_cots_detection.csv","PCT",1500);
+    setupGrowingChart("mmp_zone","replay-zone","zone-status","data/mmp_zone_2025.csv","MEAN_COVER",1500);
+    setupGrowingChart("reef_change_diverging","replay-change","change-status","data/largest_reef_changes.csv","CHANGE",1700);
+
+    // Week 10 Overview + Detail concept, adapted to mouse hover.
+    // The main Vega map still handles its normal tooltip.
+    // A second Vega-Lite map shows the same data at a closer zoom.
+    function enableReefMagnifier(mainView) {
+      const panel = document.getElementById("reef-zoom-panel");
+      const title = document.getElementById("reef-zoom-name");
+      const wrapper = document.querySelector(".map-overview-wrapper");
+      let timer;
+      let lastLocation = "";
+      let requestNumber = 0;
+
+      mainView.addEventListener("mouseover", function(event, item) {
+        if (!item || !item.datum) return;
+        const reef = item.datum;
+        const lon = Number(reef.LONGITUDE);
+        const lat = Number(reef.LATITUDE);
+        if (!Number.isFinite(lon) || !Number.isFinite(lat)) return;
+
+        panel.hidden = false;
+        title.textContent = reef.REEF_NAME || "Selected reef";
+        const location = lon.toFixed(4) + "," + lat.toFixed(4);
+        if (location === lastLocation) return;
+        lastLocation = location;
+        clearTimeout(timer);
+        const thisRequest = ++requestNumber;
+        timer = setTimeout(function() {
+          if (thisRequest !== requestNumber || panel.hidden) return;
+          const detail = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "width": 238,
+            "height": 220,
+            "projection": {"type":"mercator", "center":[lon,lat], "scale":18000},
+            "config": {"background":"#fff", "view":{"stroke":null},
+                       "legend":{"labelFontSize":10,"titleFontSize":11}},
+            "layer": [
+              {"data":{"url":"https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+                        "format":{"type":"topojson","feature":"countries"}},
+               "mark":{"type":"geoshape","fill":"#e5ece8","stroke":"#b7c7c3","strokeWidth":0.5}},
+              {"data":{"url":"data/monitoring_footprint.csv"},
+               "mark":{"type":"circle","size":54,"opacity":0.78,"stroke":"white","strokeWidth":0.45},
+               "encoding":{
+                 "longitude":{"field":"LONGITUDE","type":"quantitative"},
+                 "latitude":{"field":"LATITUDE","type":"quantitative"},
+                 "color":{"field":"PROGRAM","type":"nominal",
+                          "scale":{"domain":["Manta tow","Site transect"],
+                                   "range":["#276C9A","#D6A04B"]},
+                          "legend":null},
+                 "tooltip":[{"field":"REEF_NAME","title":"Reef"},
+                            {"field":"PROGRAM","title":"Survey method"},
+                            {"field":"LAST_YEAR","title":"Latest year"}]
+               }},
+              {"data":{"values":[{"LONGITUDE":lon,"LATITUDE":lat}]},
+               "mark":{"type":"circle","size":260,"filled":false,"stroke":"#111111","strokeWidth":2},
+               "encoding":{"longitude":{"field":"LONGITUDE","type":"quantitative"},
+                           "latitude":{"field":"LATITUDE","type":"quantitative"}}}
+            ]
+          };
+          vegaEmbed("#reef-zoom-map", detail, {actions:false, renderer:"svg"})
+            .catch(function(error) { console.error("Zoom map error:", error); });
+        }, 160);
+      });
+
+      wrapper.addEventListener("mouseleave", function() {
+        clearTimeout(timer);
+        requestNumber++;
+        lastLocation = "";
+        panel.hidden = true;
+      });
+    }
+
+    // Map 2: optional nearby detail, preserving the original proportional-symbol tooltip.
+    function enableCoralMagnifier(mainView) {
+      const panel = document.getElementById("coral-zoom-panel");
+      const label = document.getElementById("coral-zoom-name");
+      const wrapper = document.getElementById("map2_proportional_symbol_map").parentElement;
+      let timeout, lastKey = "", serial = 0;
+      mainView.addEventListener("mouseover", function(event, item) {
+        if (!item || !item.datum) return;
+        const reef = item.datum;
+        const lon = Number(reef.LONGITUDE), lat = Number(reef.LATITUDE);
+        if (!Number.isFinite(lon) || !Number.isFinite(lat)) return;
+        panel.hidden = false;
+        const cover = Number(reef.HARD_CORAL_COVER);
+        label.textContent = (reef.REEF_NAME || "Selected reef") +
+          (Number.isFinite(cover) ? " · " + cover.toFixed(1) + "% cover" : "");
+        const key = lon.toFixed(4) + "," + lat.toFixed(4);
+        if (key === lastKey) return;
+        lastKey = key;
+        clearTimeout(timeout);
+        const req = ++serial;
+        timeout = setTimeout(function() {
+          if (req !== serial || panel.hidden) return;
+          const detail = {
+            "$schema":"https://vega.github.io/schema/vega-lite/v5.json",
+            "width":238,"height":220,
+            "projection":{"type":"mercator","center":[lon,lat],"scale":18000},
+            "config":{"background":"#ffffff","view":{"stroke":null}},
+            "layer":[
+              {"data":{"url":"https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+                       "format":{"type":"topojson","feature":"countries"}},
+               "mark":{"type":"geoshape","fill":"#e5ece8","stroke":"#b7c7c3","strokeWidth":0.5}},
+              {"data":{"url":"data/ltmp_hard_coral_2022_23.csv"},
+               "mark":{"type":"circle","color":"#D48B55","opacity":0.55,"stroke":"white","strokeWidth":0.5},
+               "encoding":{"longitude":{"field":"LONGITUDE","type":"quantitative"},
+                           "latitude":{"field":"LATITUDE","type":"quantitative"},
+                           "size":{"field":"HARD_CORAL_COVER","type":"quantitative",
+                                   "scale":{"domain":[0,100],"range":[15,340]},"legend":null},
+                           "tooltip":[{"field":"REEF_NAME","title":"Reef"},
+                                      {"field":"HARD_CORAL_COVER","title":"Hard coral (%)","format":".1f"}]}},
+              {"data":{"values":[{"LONGITUDE":lon,"LATITUDE":lat}]},
+               "mark":{"type":"circle","size":380,"filled":false,"stroke":"#222222","strokeWidth":2},
+               "encoding":{"longitude":{"field":"LONGITUDE","type":"quantitative"},
+                           "latitude":{"field":"LATITUDE","type":"quantitative"}}}
+            ]
+          };
+          vegaEmbed("#coral-zoom-map",detail,{actions:false,renderer:"svg"}).catch(console.error);
+        },160);
+      });
+      wrapper.addEventListener("mouseleave",function() {
+        clearTimeout(timeout); serial++; lastKey=""; panel.hidden=true;
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/sector_year_hard_coral.csv"
+  },
+  "width": 650,
+  "height": 290,
+  "title": {
+    "text": "05  How does coral cover vary by sector and year?",
+    "subtitle": "LTMP 2015–23; grey = fewer than 3 sampled reefs (or no observations)",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "YEAR",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "SECTOR",
+      "type": "nominal",
+      "title": "AIMS sector",
+      "sort": "ascending"
+    },
+    "color": {
+      "condition": {
+        "test": "datum.HAS_DATA == 1",
+        "field": "MEAN_COVER",
+        "type": "quantitative",
+        "title": "Mean hard coral cover (%)",
+        "scale": {
+          "scheme": "yellowgreenblue",
+          "domain": [
+            0,
+            100
+          ]
+        }
+      },
+      "value": "#E0E5E8"
+    },
+    "tooltip": [
+      {
+        "field": "SECTOR_NAME",
+        "title": "Sector Name"
+      },
+      {
+        "field": "SECTOR",
+        "title": "Sector Code"
+      },
+      {
+        "field": "YEAR",
+        "title": "Year"
+      },
+      {
+        "field": "COVER_LABEL",
+        "title": "Mean Cover (%)"
+      },
+      {
+        "field": "REEFS_LABEL",
+        "title": "Reefs Sampled"
+      }
+    ]
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 660,
+  "height": 490,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      148.4,
+      -17.9
+    ],
+    "scale": 1550
+  },
+  "title": {
+    "text": "03  Where was crown-of-thorns (COTS) detected?",
+    "subtitle": "Manta-tow surveys, 2023; percentage of surveyed reefs with COTS detected per 1\u00b0 grid cell",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e5ece8",
+        "stroke": "#b7c7c3",
+        "strokeWidth": 0.6
+      }
+    },
+    {
+      "data": {
+        "url": "data/cots_grid_2023.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.properties.CELL_ID",
+          "as": "CELL_ID"
+        },
+        {
+          "lookup": "CELL_ID",
+          "from": {
+            "data": {
+              "url": "data/cots_grid_2023.csv"
+            },
+            "key": "CELL_ID",
+            "fields": [
+              "REEFS",
+              "REEFS_WITH_COTS",
+              "COTS_DETECTION_PCT"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8,
+        "opacity": 0.87
+      },
+      "encoding": {
+        "color": {
+          "field": "COTS_DETECTION_PCT",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "scheme": "purples"
+          },
+          "legend": {
+            "title": "Reefs with COTS (%)"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "REEFS",
+            "title": "Surveyed reefs"
+          },
+          {
+            "field": "REEFS_WITH_COTS",
+            "title": "Reefs with COTS"
+          },
+          {
+            "field": "COTS_DETECTION_PCT",
+            "title": "Detection (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ]
+}

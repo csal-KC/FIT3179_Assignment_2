@@ -1,0 +1,119 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/shelf_benthic_waffle.csv"
+  },
+  "title": {
+    "text": "08  What covers surveyed reef sites?",
+    "subtitle": "100 squares per shelf; each square is approximately 1%",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  },
+  "facet": {
+    "column": {
+      "field": "SHELF_NAME",
+      "type": "nominal",
+      "sort": [
+        "Inshore",
+        "Mid-shelf",
+        "Outer Shelf"
+      ],
+      "title": null,
+      "header": {
+        "labelFontSize": 16,
+        "labelFontWeight": "bold"
+      }
+    }
+  },
+  "spec": {
+    "width": 205,
+    "height": 205,
+    "mark": {
+      "type": "rect",
+      "stroke": "#ffffff",
+      "strokeWidth": 1.6,
+      "cornerRadius": 2
+    },
+    "encoding": {
+      "x": {
+        "field": "COL",
+        "type": "ordinal",
+        "axis": null,
+        "sort": "ascending",
+        "scale": {
+          "paddingInner": 0.05,
+          "paddingOuter": 0
+        }
+      },
+      "y": {
+        "field": "ROW",
+        "type": "ordinal",
+        "axis": null,
+        "sort": "ascending",
+        "scale": {
+          "paddingInner": 0.05,
+          "paddingOuter": 0
+        }
+      },
+      "color": {
+        "field": "GROUP_CODE",
+        "type": "nominal",
+        "title": "Cover category",
+        "scale": {
+          "domain": [
+            "Hard Coral",
+            "Soft Coral",
+            "Algae",
+            "Other"
+          ],
+          "range": [
+            "#E69F00",
+            "#8C6BB1",
+            "#009E73",
+            "#9CA9AE"
+          ]
+        },
+        "legend": {
+          "orient": "bottom",
+          "direction": "horizontal",
+          "columns": 4
+        }
+      },
+      "tooltip": [
+        {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "title": "Shelf"
+        },
+        {
+          "field": "GROUP_CODE",
+          "type": "nominal",
+          "title": "Category"
+        },
+        {
+          "field": "PCT",
+          "type": "quantitative",
+          "title": "Actual Share (%)",
+          "format": ".1f"
+        }
+      ]
+    }
+  }
+}

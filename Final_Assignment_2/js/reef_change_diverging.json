@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "white",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12
+    }
+  },
+  "data": {
+    "url": "data/largest_reef_changes.csv"
+  },
+  "width": 610,
+  "height": 420,
+  "title": {
+    "text": "13  Which matched reefs changed most?",
+    "subtitle": "Eight largest declines and eight largest increases, 2022\u201323; percentage points",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 2
+  },
+  "encoding": {
+    "y": {
+      "field": "REEF_NAME",
+      "type": "nominal",
+      "sort": {
+        "field": "CHANGE",
+        "order": "ascending"
+      },
+      "title": null,
+      "axis": {
+        "labelLimit": 200
+      }
+    },
+    "x": {
+      "field": "CHANGE",
+      "type": "quantitative",
+      "title": "Change in hard coral cover (percentage points)",
+      "scale": {
+        "domain": [
+          -12,
+          12
+        ]
+      }
+    },
+    "color": {
+      "condition": {
+        "test": "datum.CHANGE >= 0",
+        "value": "#009E73"
+      },
+      "value": "#D55E00"
+    },
+    "tooltip": [
+      {
+        "field": "REEF_NAME",
+        "title": "Reef"
+      },
+      {
+        "field": "COVER_2022",
+        "title": "2022 (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "COVER_2023",
+        "title": "2023 (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "CHANGE",
+        "title": "Change (pp)",
+        "format": "+.1f"
+      }
+    ]
+  }
+}

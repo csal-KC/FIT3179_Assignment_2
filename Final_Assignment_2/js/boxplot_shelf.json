@@ -1,0 +1,441 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/boxplot_summary.csv"
+  },
+  "width": 650,
+  "height": 310,
+  "title": {
+    "text": "06  How variable is coral cover across reef shelves?",
+    "subtitle": "LTMP reef-level means, 2022–23",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 11
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "gridColor": "#e7efed"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#25373B",
+        "strokeWidth": 1.6
+      },
+      "encoding": {
+        "x": {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "title": "Reef shelf",
+          "sort": [
+            "Inshore",
+            "Mid-shelf",
+            "Outer Shelf"
+          ]
+        },
+        "y": {
+          "field": "LOWER",
+          "type": "quantitative",
+          "title": "Mean hard coral cover (%)",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "y2": {
+          "field": "UPPER"
+        },
+        "tooltip": [
+          {
+            "field": "SHELF_NAME",
+            "title": "Reef Shelf"
+          },
+          {
+            "field": "MEDIAN",
+            "title": "Median Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q1",
+            "title": "Lower Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q3",
+            "title": "Upper Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "LOWER",
+            "title": "Lower Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "UPPER",
+            "title": "Upper Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MIN",
+            "title": "Minimum (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MAX",
+            "title": "Maximum (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "size": 65,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "x": {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "title": "Reef shelf",
+          "sort": [
+            "Inshore",
+            "Mid-shelf",
+            "Outer Shelf"
+          ]
+        },
+        "y": {
+          "field": "Q1",
+          "type": "quantitative"
+        },
+        "y2": {
+          "field": "Q3"
+        },
+        "color": {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Inshore",
+              "Mid-shelf",
+              "Outer Shelf"
+            ],
+            "range": [
+              "#D55E00",
+              "#0072B2",
+              "#CC79A7"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "SHELF_NAME",
+            "title": "Reef Shelf"
+          },
+          {
+            "field": "MEDIAN",
+            "title": "Median Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q1",
+            "title": "Lower Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q3",
+            "title": "Upper Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "LOWER",
+            "title": "Lower Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "UPPER",
+            "title": "Upper Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MIN",
+            "title": "Minimum (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MAX",
+            "title": "Maximum (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "color": "white",
+        "thickness": 2,
+        "size": 65
+      },
+      "encoding": {
+        "x": {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "title": "Reef shelf",
+          "sort": [
+            "Inshore",
+            "Mid-shelf",
+            "Outer Shelf"
+          ]
+        },
+        "y": {
+          "field": "MEDIAN",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "SHELF_NAME",
+            "title": "Reef Shelf"
+          },
+          {
+            "field": "MEDIAN",
+            "title": "Median Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q1",
+            "title": "Lower Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q3",
+            "title": "Upper Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "LOWER",
+            "title": "Lower Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "UPPER",
+            "title": "Upper Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MIN",
+            "title": "Minimum (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MAX",
+            "title": "Maximum (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "color": "#25373B",
+        "size": 22,
+        "thickness": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "title": "Reef shelf",
+          "sort": [
+            "Inshore",
+            "Mid-shelf",
+            "Outer Shelf"
+          ]
+        },
+        "y": {
+          "field": "LOWER",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "SHELF_NAME",
+            "title": "Reef Shelf"
+          },
+          {
+            "field": "MEDIAN",
+            "title": "Median Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q1",
+            "title": "Lower Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q3",
+            "title": "Upper Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "LOWER",
+            "title": "Lower Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "UPPER",
+            "title": "Upper Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MIN",
+            "title": "Minimum (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MAX",
+            "title": "Maximum (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "color": "#25373B",
+        "size": 22,
+        "thickness": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "title": "Reef shelf",
+          "sort": [
+            "Inshore",
+            "Mid-shelf",
+            "Outer Shelf"
+          ]
+        },
+        "y": {
+          "field": "UPPER",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "SHELF_NAME",
+            "title": "Reef Shelf"
+          },
+          {
+            "field": "MEDIAN",
+            "title": "Median Cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q1",
+            "title": "Lower Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Q3",
+            "title": "Upper Quartile (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "LOWER",
+            "title": "Lower Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "UPPER",
+            "title": "Upper Whisker (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MIN",
+            "title": "Minimum (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "MAX",
+            "title": "Maximum (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/boxplot_outliers.csv"
+      },
+      "mark": {
+        "type": "point",
+        "filled": false,
+        "size": 55,
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "title": "Reef shelf",
+          "sort": [
+            "Inshore",
+            "Mid-shelf",
+            "Outer Shelf"
+          ]
+        },
+        "y": {
+          "field": "COVER",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "SHELF_NAME",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Inshore",
+              "Mid-shelf",
+              "Outer Shelf"
+            ],
+            "range": [
+              "#D55E00",
+              "#0072B2",
+              "#CC79A7"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "SHELF_NAME",
+            "title": "Reef Shelf"
+          },
+          {
+            "field": "COVER",
+            "title": "Outlier Cover (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ]
+}
